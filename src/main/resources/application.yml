@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+#      username: root
+#      password: root
+      database: tweetapp
+      host: localhost
+      port: 27017
+
+
+tweetapp:
+  app:
+    jwtSecret: apicjejwr9j3p2nipn3nnosdnocnoj536547ko
+    jwtExpiration: 86400000
+
