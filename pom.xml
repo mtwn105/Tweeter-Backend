@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.tweetapp</groupId>
-    <artifactId>app</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>app</name>
+    <artifactId>tweeter</artifactId>
+    <version>1.0.0</version>
+    <name>Tweeter</name>
     <description>TweetApp Backend</description>
     <properties>
         <java.version>1.8</java.version>
