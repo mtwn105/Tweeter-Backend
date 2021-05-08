@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   data:
     mongodb:
@@ -10,6 +13,11 @@ spring:
 
 tweetapp:
   app:
-    jwtSecret: '${JWT_SECRET}'
+    jwtSecret: '${JWT_SECRET:sadeqw2h312lh3oli1-8de0734325frsrfsd}'
     jwtExpiration: 86400000
+
+
+kafka:
+  bootstrap-servers: ${KAFKA_HOST:localhost}:${KAFKA_PORT:9092}
+  topic-name: ${KAFKA_TOPIC:tweets}
 

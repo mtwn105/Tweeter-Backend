@@ -2,7 +2,8 @@ package com.tweetapp.app.controller;
 
 import com.tweetapp.app.dao.entity.Tweet;
 import com.tweetapp.app.service.TweetService;
-import org.apache.commons.collections.CollectionUtils;
+import com.tweetapp.app.service.impl.MessageProducerService;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.http.HttpStatus;
@@ -12,13 +13,16 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1.0/tweets")
 public class TweetController {
 
     @Autowired
     TweetService tweetService;
+
+    @Autowired
+    MessageProducerService kafkaProducer;
 
     @GetMapping()
     public ResponseEntity<List<Tweet>> getAllTweets() {
@@ -38,6 +42,8 @@ public class TweetController {
         Tweet response = tweetService.postTweet(username, tweet);
 
         if (response != null) {
+            // Send tweet to kafka topic
+            kafkaProducer.sendTweet(tweet);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

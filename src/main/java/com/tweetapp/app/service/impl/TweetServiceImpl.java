@@ -5,7 +5,7 @@ import com.tweetapp.app.dao.TweetDao;
 import com.tweetapp.app.dao.entity.Tweet;
 import com.tweetapp.app.dao.entity.User;
 import com.tweetapp.app.service.TweetService;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
